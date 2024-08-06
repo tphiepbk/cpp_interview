@@ -1,11 +1,11 @@
 CC = g++
-FLAGS = -g -Wall
+FLAGS = -g -Wall -std=c++20
 
 TARGET = learncpp
 
 RM = rm -rf
 
-all: MemoryManagement SmartPointer StructClass OverloadOverride Casting ConstFunction
+all: MemoryManagement SmartPointer StructClass OverloadOverride Casting ConstFunction Thread
 	$(CC) $(FLAGS) -o $(TARGET) \
 	main.cc \
 	StructClass.o \
@@ -13,7 +13,9 @@ all: MemoryManagement SmartPointer StructClass OverloadOverride Casting ConstFun
 	OverloadOverride.o \
 	Casting.o \
 	ConstFunction.o \
-	SmartPointer.o
+	SmartPointer.o \
+	Thread.o
+	./$(TARGET)
 
 MemoryManagement: MemoryManagement.cc MemoryManagement.hh define.hh
 	$(CC) $(FLAGS) -c MemoryManagement.cc MemoryManagement.hh define.hh
@@ -32,6 +34,9 @@ Casting: Casting.cc Casting.hh define.hh
 
 ConstFunction: ConstFunction.cc ConstFunction.hh define.hh
 	$(CC) $(FLAGS) -c ConstFunction.cc ConstFunction.hh define.hh
+
+Thread: Thread.cc Thread.hh
+	$(CC) $(FLAGS) -c Thread.cc Thread.hh define.hh
 
 clean:
 	$(RM) *.o *.gch $(TARGET)

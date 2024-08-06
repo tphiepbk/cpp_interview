@@ -7,13 +7,11 @@
 #include "OverloadOverride.hh"
 #include "Casting.hh"
 #include "ConstFunction.hh"
+#include "Thread.hh"
+
 #include <cstddef>
-#include <iterator>
 #include <memory>
 #include <string>
-#include <thread>
-#include <chrono>
-#include <vector>
 #include <typeinfo>
 
 void demoStackHeap() {
@@ -98,31 +96,6 @@ void demoSTDSmartPointer() {
     blankline;
 }
 
-// Demo thread
-void threadFunc(unsigned int threadNumber, unsigned int sleepTime) {
-    pprint("Running thread number " + std::to_string(threadNumber));
-    pprint("Sleeping for " + std::to_string(sleepTime) + " seconds");
-    std::this_thread::sleep_for(std::chrono::seconds(sleepTime));
-}
-
-void demoThread() {
-    section("Thread");
-    unsigned int numberOfThreads = 5;
-    std::vector<std::thread> threadList;
-
-    // Create threads
-    for (unsigned int i = 0; i < numberOfThreads; i++) {
-        std::thread threadObj(threadFunc, i, i);
-        threadList.push_back(std::move(threadObj));
-    }
-
-    // Close threads
-    for (std::vector<std::thread>::reverse_iterator it = threadList.rbegin() ; it != threadList.rend() ; ++it) {
-        it->join();
-    }
-
-    pprint("Finish executing all threads");
-}
 
 void demoStructClass() {
     section("Struct vs Class");
@@ -237,7 +210,6 @@ int main() {
     // demoMemoryManagement();
     // demoSmartPointer();
     // demoSTDSmartPointer();
-    // demoThread();
     // demoStructClass();
     // demoPointer();
     // demoOverloadOverride();
@@ -245,7 +217,11 @@ int main() {
     // demoCasting();
     // demoInlineFunctions();
     // demoConstFunction();
-    demoUnsignedIntLoop();
+    // demoUnsignedIntLoop();
+    // demoThread();
+    // demoMutex();
+    demoCountingSemaphore();
+    demoBinarySemaphore();
     blankline;
 }
 

@@ -1,27 +1,51 @@
 // main.cc
 
-#include "Sorting.hh"
-#include "define.hh"
+#include "BubbleSort.hh"
+#include "QuickSort.hh"
+#include "SelectionSort.hh"
+#include "Heap.hh"
+#include "common.hh"
 
-void printArr(uint* arr, uint n) {
-    for (uint i = 0; i < n; i++) {
+void printArr(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
         std::cout << arr[i] << " ";
     }
     std::cout << "\n";
 }
 
 int main() {
-    uint n = 6, ub = 20, lb = 1;
-    uint* arr = new uint[n];
-    for (uint i = 0; i < n; i++) {
-        arr[i] = rand() % (ub - lb + 1);
-    }
+    // int n = 4, ub = 20, lb = 1;
+    // int* arr = new int[n];
+    // for (int i = 0; i < n; i++) {
+    //     arr[i] = rand() % (ub - lb + 1);
+    // }
+
+    int arr[8] = {5, 12, 64, 1, 37, 90, 91, 97};
+    int n = 8;
+
+    section("Original array");
     printArr(arr, n);
 
-    // bubbleSort
+    // section("Quick sort");
+    // quickSort(arr, 0, n-1);
+    // printArr(arr, n);
+
+    section("Bubble sort");
     bubbleSort(arr, n);
     printArr(arr, n);
 
-    delete[] arr;
-    arr = nullptr;
+    section("Selection sort");
+    selectionSort(arr, n);
+    printArr(arr, n);
+
+    section("Max heap");
+    buildMaxHeap(arr, n);
+    printArr(arr, n);
+
+    section("Min heap");
+    buildMinHeap(arr, n);
+    printArr(arr, n);
+
+    // delete[] arr;
+    // arr = nullptr;
 }

@@ -1,4 +1,4 @@
-// define.hh
+// common.hh
 
 #include <iostream>
 
@@ -7,5 +7,7 @@
 #define pprint(message) std::cout << message << "\n"
 #define section(title) std::cout << "==================== " << title << " ====================" << "\n"
 #define subsection(title) std::cout << "********* " << title << " *********" << "\n"
+#define db(message) std::cout << "[debug]: " << message << "\n"
 
-#define uint unsigned int
+void swap(int*, int, int);
+
