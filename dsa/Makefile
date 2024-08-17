@@ -1,7 +1,7 @@
 CC = g++
 FLAGS = -g -Wall
 
-TARGET = learndsa
+TARGET = learndsa.out
 
 RM = rm -rf
 

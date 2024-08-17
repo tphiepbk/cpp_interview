@@ -23,13 +23,16 @@ echo "Running make..."
 make
 if [[ "$?" != 0 ]]; then
     echo "Make error"
+    # Revert
+    sed -i "s/${filename}/<filename>/g" Makefile
+    sed -i "s/${problem}/<problem>/g" Makefile
     exit 2
 fi
 
 # Run program
 echo "====================================================="
 echo "Running program ${problem}..."
-./codeforces
+./codeforces.out
 
 # Revert
 sed -i "s/${filename}/<filename>/g" Makefile

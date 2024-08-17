@@ -5,7 +5,7 @@
 CC = g++
 FLAGS = -g -Wall -std=c++17
 
-TARGET = codeforces.out
+TARGET = leetcode.out
 
 RM = rm -rf
 

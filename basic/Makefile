@@ -1,7 +1,7 @@
 CC = g++
 FLAGS = -g -Wall -std=c++20
 
-TARGET = learncpp
+TARGET = learncpp.out
 
 RM = rm -rf
 
